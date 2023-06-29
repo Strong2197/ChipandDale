@@ -3,6 +3,7 @@ __pycache__
 chip
 db.sqlite3
 /static
+/images
 .DS_Store
 .vscode/
 .history/
