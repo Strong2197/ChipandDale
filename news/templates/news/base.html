@@ -15,8 +15,11 @@
   <body>
     <div class="page-header">
         <h1><a href="/">Sashka Blog</a></h1>
+         {% if user.is_superuser %}
         <a href="{% url 'post_new' %}" class="top-menu"> <span class="glyphicon glyphicon-plus" aria-hidden="false"></span> </a>
+         {% endif %}
     </div>
+
     <div class="content">
         <div class="row">
              <nav>
