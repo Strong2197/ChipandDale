@@ -39,10 +39,11 @@ h1, h2, h3, h4 {
 }
 
 .top-menu, .top-menu:hover, .top-menu:visited {
-    color: #ffffff;
+    color: #000000;
     float: right;
     font-size: 26pt;
     margin-right: 20px;
+
 }
 
 .post {
@@ -60,3 +61,20 @@ h1, h2, h3, h4 {
     margin: 0 1.5% 1.5% 0;
     border-color: red;
 }
+ nav {
+            background-color: #333;
+        }
+nav ul li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+nav ul li a:hover {
+            background-color: #555;
+        }
