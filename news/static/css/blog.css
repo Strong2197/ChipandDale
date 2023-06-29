@@ -1,25 +1,30 @@
+.datetime {
+    margin-left: 85%;
+}
 h1 a {
     color: #FCA205;
     font-family: 'Lobster';
 
-}body {
+}
+body {
     padding-left: 15px;
 }
 .page-header {
     background-color: #ff9400;
     margin-top: 0;
-    padding: 20px 20px 20px 20px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+    margin: 0 1% 1.5% 0%;
 }
 
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
     color: #ffffff;
     font-size: 36pt;
     text-decoration: none;
+
 }
 
 .content {
-    margin: 0 5% 1.5% 5%;
+    margin: 0 1% 1.5% 1%;
 }
 
 h1, h2, h3, h4 {
@@ -43,7 +48,8 @@ h1, h2, h3, h4 {
     float: right;
     font-size: 26pt;
     margin-right: 20px;
-
+    position:absolute;
+    top: 40px; right: 40px;
 }
 
 .post {
@@ -72,7 +78,7 @@ nav ul li {
 nav ul li a {
             color: #fff;
             text-decoration: none;
-            padding: 10px;
+            padding: 1px;
         }
 
 nav ul li a:hover {

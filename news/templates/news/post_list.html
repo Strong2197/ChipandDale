@@ -9,9 +9,13 @@
             </div>
           {% if post.image %}
            <img src="{{ post.image.url }}", width="200", height="200" , alt="{{ post.title }}" >
+            {% endif %}</a>
+          <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title}} </h1>
+                {% if post.text|length >= 27 %}
+             <p>{{ post.text|linebreaksbr|slice:":26"  }} ...</p></a>
+            {% else %}
+            <p>{{ post.text|linebreaksbr|slice:":26"  }}</p></a>
             {% endif %}
-          <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <p>{{ post.text }}</p></a>
 
 
         </div>
