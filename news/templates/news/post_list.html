@@ -1,6 +1,15 @@
 {% extends 'news/base.html' %}
 
 {% block content %}
+<div class="top-menu">
+{% if user.is_superuser %}
+        <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'post_new' %}">+</a>
+  </li>
+        </ul>
+         {% endif %}
+</div>
     {% for post in posts %}
         <div class="col-xs-6 col-sm-3">
             <a href="{% url 'post_detail' pk=post.pk %}">

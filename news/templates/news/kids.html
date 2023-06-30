@@ -1,0 +1,47 @@
+{% extends 'news/base.html' %}
+
+{% block content %}
+
+  <div class="top-menu">
+{% if user.is_superuser %}
+        <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'kids_new' %}">+</a>
+  </li>
+        </ul>
+         {% endif %}
+</div>
+<div class="container">
+<div class ="row">
+        <div class="col">
+            <h1>Ціна</h1>
+        </div>
+        <div class="col">
+            <h1>Назва</h1>
+        </div>
+    <div class="col">
+            <h1>Фото</h1>
+        </div>
+    </div>
+    {% for menu in menu %}
+<div class ="row">
+        <div class="col">
+            <h1> {{ menu.price }}</h1>
+        </div>
+        <div class="col">
+            <h1>{{menu.name}}</h1>
+        </div>
+     <div class="col">
+            <img src="{{ menu.image.url }}", width="200", height="200" , alt="{{ menu.name }}" >
+        </div>
+    <div class="editbutton">
+      {% if user.is_superuser %}
+            <a class="btn btn-default" href="{% url 'kids_edit' pk=menu.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a class="btn btn-default" href="{% url 'kids_delete' pk=menu.pk %}"><span class="glyphicon glyphicon-trash"></span></a>
+            {% endif %}
+    </div>
+    </div>
+
+    {% endfor %}
+    </div>
+{% endblock %}

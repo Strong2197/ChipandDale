@@ -1,6 +1,15 @@
 {% extends 'news/base.html' %}
 
 {% block content %}
+<div class="top-menu">
+{% if user.is_superuser %}
+       <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'post_new' %}">+</a>
+  </li>
+        </ul>
+         {% endif %}
+</div>
     <h1>New posts</h1>
     <form method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %}
         {{ form.as_p }}

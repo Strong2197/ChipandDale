@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Post
+from .models import Post, Menu, Attracs
 
 class PostForm(forms.ModelForm):
 
@@ -8,3 +8,13 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ('title', 'text', 'image')
 
+class MenuForm(forms.ModelForm):
+    class Meta:
+        model = Menu
+        fields = ('price', 'dish')
+
+
+class KidsForm(forms.ModelForm):
+    class Meta:
+        model = Attracs
+        fields = ('price', 'name', 'image')

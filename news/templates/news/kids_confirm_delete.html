@@ -1,0 +1,15 @@
+{% extends 'news/base.html' %}
+
+{% block content %}
+<h2>Видалення</h2>
+
+<form method="POST">
+  {% csrf_token %}
+  <p>Точно видалити "{{menu.name}}"?</p>
+  <div>
+    <button type="submit" class="btn btn-default">Yes, Delete</button>
+    <a href="{% url 'kids_detail' %}">Cancel</a>
+  </div>
+</form>
+
+{% endblock content %}
