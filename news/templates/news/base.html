@@ -1,7 +1,7 @@
 {% load static %}
 <html>
     <head>
-        <title>Sashka blog</title>
+        <title>ТК "Барви Карпат"</title>
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
@@ -11,13 +11,13 @@
 
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximu minm-scale=1.0,imum-scale=1.0">
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">ТРК "Барви Карпат"</a>
+    <a class="navbar-brand" href="/">ТК "Барви Карпат"</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -36,9 +36,8 @@
     </div>
   </div>
 </nav>
-    <div class = "datetime" >
-        <h3>{% now "d E Y H:i" %}</h3>
-    </div>
+
+    <div id="SinoptikInformer" style="width:295px;" class="SinoptikInformer type1c1"><div class="siHeader"><div class="siLh"><div class="siMh"><a onmousedown="siClickCount();" class="siLogo" href="https://ua.sinoptik.ua/" target="_blank" rel="nofollow" title="Погода"> </a>Погода <span id="siHeader"></span></div></div></div><div class="siBody"><a onmousedown="siClickCount();" href="https://ua.sinoptik.ua/погода-дзвиняч" title="Погода в Дзвинячі" target="_blank"><div class="siCity"><div class="siCityName"><span>Дзвиняч</span></div><div id="siCont0" class="siBodyContent"><div class="siLeft"><div class="siTerm"></div><div class="siT" id="siT0"></div><div id="weatherIco0"></div></div><div class="siInf"><p>вологість: <span id="vl0"></span></p><p>тиск: <span id="dav0"></span></p><p>вітер: <span id="wind0"></span></p></div></div></div></a><div class="siLinks">Погода на 10 днів від <a href="https://ua.sinoptik.ua/погода-дзвиняч/10-днів" title="Погода на 10 днів" target="_blank" onmousedown="siClickCount();">sinoptik.ua</a></div></div><div class="siFooter"><div class="siLf"><div class="siMf"></div></div></div></div><script type="text/javascript" charset="UTF-8" src="//sinoptik.ua/informers_js.php?title=4&amp;wind=3&amp;cities=303009582&amp;lang=ua"></script>
 
 
 
@@ -58,7 +57,7 @@
           <span><img src="{% static 'images/logo.png' %}" height="35" width="20"></span>
         </div>
         <div class="copyright">
-          <p>developed and maintained by <a href="#" target="_blank">company</a></p>
+          <p>Торговий комплекс "Барви Карпат"</a></p>
         </div>
         <div>
           <ul class="d-flex gap-3 list-unstyled">
