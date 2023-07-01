@@ -13,27 +13,27 @@
 </div>
 <div class="container">
 <div class ="row">
-        <div class="col">
+        <div class="col text-center">
             <h1>Ціна</h1>
         </div>
-        <div class="col">
+        <div class="col text-center">
             <h1>Страва</h1>
         </div>
     </div>
     {% for menu in menu %}
 <div class ="row">
-        <div class="col">
+        <div class="col text-center">
             <h1> {{ menu.price }}</h1>
         </div>
-        <div class="col">
+        <div class="col text-center">
             <h1>{{menu.dish}}</h1>
         </div>
+     {% if user.is_superuser %}
     <div class="editbutton">
-      {% if user.is_superuser %}
-            <a class="btn btn-default" href="{% url 'menu_edit' pk=menu.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-            <a class="btn btn-default" href="{% url 'menu_delete' pk=menu.pk %}"><span class="glyphicon glyphicon-trash"></span></a>
-            {% endif %}
+            <a class="btn btn-dark" href="{% url 'menu_edit' pk=menu.pk %}">Edit</span></a>
+            <a class="btn btn-dark" href="{% url 'menu_delete' pk=menu.pk %}">Delete</span></a>
     </div>
+     {% endif %}
     </div>
 
     {% endfor %}

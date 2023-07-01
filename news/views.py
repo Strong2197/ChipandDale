@@ -107,7 +107,7 @@ def kids_new(request):
 def kids_edit(request, pk):
     menu = get_object_or_404(Attracs, pk=pk)
     if request.method == "POST":
-        form = KidsForm(request.POST, instance=menu)
+        form = KidsForm(request.POST,request.FILES, instance=menu)
         if form.is_valid():
             menu = form.save(commit=False)
             menu.save()

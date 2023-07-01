@@ -7,8 +7,8 @@
   {% csrf_token %}
   <p>Точно видалити "{{menu.dish}}"?</p>
   <div>
-    <button type="submit" class="btn btn-default">Yes, Delete</button>
-    <a href="{% url 'kids_detail' %}">Cancel</a>
+    <button type="submit" class="btn btn-dark">Так, видалити</button>
+    <a class="btn btn-dark" href="{% url 'kids_detail' %}">Скасувати</a>
   </div>
 </form>
 

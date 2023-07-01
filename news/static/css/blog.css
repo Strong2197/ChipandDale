@@ -1,32 +1,25 @@
 .datetime {
     margin-left: 85%;
 }
-.top-menu, .top-menu:hover, .top-menu:visited {
-    width: 20%;
-}
-.col{
-border: 1px solid;
-background: #E5FC7C;
-text-align:center;
-}
+
 .menu_dish{
 width: 20%;
 border: 1px solid;
 background: #E5FC7C;
 text-align:center;
 }
+
 .editbutton{
 width:5%;
 margin-top: 10px;
 }
+
 h1 a {
     color: #FCA205;
     font-family: 'Lobster';
 
 }
-body {
-    padding-left: 15px;
-}
+
 .page-header {
     background-color: #ff9400;
     margin-top: 0;
@@ -64,26 +57,20 @@ h1, h2, h3, h4 {
 .top-menu, .top-menu:hover, .top-menu:visited {
     color: #000000;
     float: right;
-    font-size: 26pt;
+    font-size: 25pt;
     margin-right: 20px;
     position:absolute;
-    top: 25px; right: 40px;
+    top: -10px; right: 40px;
 }
 
 .post {
     margin: 0 1.5% 1.5% 0;
-    background-color: #00ffc8;
     width: 23.5%;
     box-sizing: border-box
 }
 
 .post h1 a, .post h1 a:visited {
     color: #d711ed;
-}
-.col-auto, .col-sm-12, .col-xl-2{
-    border: 1px solid;
-    margin: 0 1.5% 1.5% 0;
-    border-color: red;
 }
  nav {
             background-color: #333;
@@ -103,3 +90,7 @@ nav ul li a {
 nav ul li a:hover {
             background-color: #555;
         }
+.col{
+border: 1px solid;
+background-color: #555;
+}

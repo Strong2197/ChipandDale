@@ -1,18 +1,13 @@
 {% extends 'news/base.html' %}
 
 {% block content %}
-<div class="top-menu">
-{% if user.is_superuser %}
-       <ul class="nav justify-content-end">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="{% url 'post_new' %}">+</a>
-  </li>
-        </ul>
-         {% endif %}
-</div>
+
+<div class="container">
     <h1>New posts</h1>
     <form method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %}
+
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
+        <p><button type="submit" class="save btn btn-dark">Save</button></p>
     </form>
+</div>
 {% endblock %}

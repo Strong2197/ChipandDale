@@ -10,23 +10,32 @@
         </ul>
          {% endif %}
 </div>
+<div class="container">
+
     {% for post in posts %}
-        <div class="col-xs-6 col-sm-3">
+{% if forloop.counter == 5 or forloop.counter == 1 or forloop.counter == 9 or forloop.counter == 13 %}
+    <div class="row">
+        {% endif %}
+        <div class="col-xl-3 col-lg-6">
             <a href="{% url 'post_detail' pk=post.pk %}">
             <div class="date">
                 {{ post.published_date }}
             </div>
           {% if post.image %}
-           <img src="{{ post.image.url }}", width="200", height="200" , alt="{{ post.title }}" >
+           <img src="{{ post.image.url }}", width="70%", height="70%" , alt="{{ post.title }}" >
             {% endif %}</a>
           <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title}} </h1>
-                {% if post.text|length >= 27 %}
-             <p>{{ post.text|linebreaksbr|slice:":26"  }} ...</p></a>
+                {% if post.text|length > 27 %}
+             <p>{{ post.text|linebreaksbr|slice:":27"  }} ...</p></a>
             {% else %}
-            <p>{{ post.text|linebreaksbr|slice:":26"  }}</p></a>
+            <p>{{ post.text|linebreaksbr|slice:":27"  }}</p></a>
             {% endif %}
-
-
         </div>
+      {% if forloop.counter == 8 or forloop.counter == 4 or forloop.counter == 12 or forloop.counter == 16 %}
+    </div>
+        {% endif %}
+    <br>
     {% endfor %}
+
+    </div>
 {% endblock %}

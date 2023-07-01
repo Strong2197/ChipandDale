@@ -10,21 +10,35 @@
         </ul>
          {% endif %}
 </div>
-        <div class="post">
+<div class="container text-center">
+        <div class="row">
+            <div class="col-6">
             {% if post.published_date %}
             <div class="date">
                 {{ post.published_date }}
-            </div>
-             {% endif %}
-            {% if post.image %}
-            <img src="{{ post.image.url }}" >
-            {% endif %}
-             {% if user.is_superuser %}
-            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-            <a class="btn btn-default" href="{% url 'post_delete' pk=post.pk %}"><span class="glyphicon glyphicon-trash"></span></a>
-            {% endif %}
+
           <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
             <p>{{ post.text|linebreaksbr }}</p>
-        </div>
 
+        </div>
+            </div>
+             {% endif %}
+
+            <div class="col-6">
+                 {% if post.image %}
+            <img src="{{ post.image.url }}" height="500px" width="500px" >
+            {% endif %}
+                </div>
+</div>
+    <br>
+    <div class="row">
+        <div col="col-2">
+         {% if user.is_superuser %}
+            <a class="btn btn-dark" href="{% url 'post_edit' pk=post.pk %}">Edit</span></a>
+            <a class="btn btn-dark" href="{% url 'post_delete' pk=post.pk %}">Delete</span></a>
+            {% endif %}
+            </div>
+    </div>
+
+</div>
 {% endblock %}
