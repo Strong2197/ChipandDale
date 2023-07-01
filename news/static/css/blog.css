@@ -118,3 +118,16 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 
 .col-2 a{
 margin-top:5%  ;
 }
+body{
+background: rgb(241,241,241);
+background: radial-gradient(circle, rgba(241,241,241,1) 0%, rgba(140,140,140,1) 100%);
+min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+footer {
+  margin-top: auto;
+}
+.d-lg-flex{
+margin-left:5%;
+}
