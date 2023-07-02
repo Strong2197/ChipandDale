@@ -24,11 +24,11 @@
           {% if post.image %}
            <img src="{{ post.image.url }}", class="rounded" width="100%", height="70%" , alt="{{ post.title }}" >
             {% endif %}</a>
-          <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title}} </h1>
+          <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title}} </a></h1>
                 {% if post.text|length > 27 %}
-             <h6>{{ post.text|linebreaksbr|slice:":27"  }} ...</h6></a>
+             <h6>{{ post.text|linebreaksbr|slice:":27"  }} ...</h6>
             {% else %}
-            <h6>{{ post.text|linebreaksbr|slice:":27"  }}</h6></a>
+            <h6>{{ post.text|linebreaksbr|slice:":27"  }}</h6>
             {% endif %}
         </div>
       {% if forloop.counter == 8 or forloop.counter == 4 or forloop.counter == 12 or forloop.counter == 16 %}
