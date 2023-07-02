@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-from .models import Post,Menu, Attracs
+from .models import Post,Menu, Attracs, MultipleImage
 from .forms import PostForm,MenuForm, KidsForm
 from django.shortcuts import redirect
 from django.contrib import messages
@@ -24,7 +24,8 @@ def kids_detail(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'news/post_detail.html', {'post': post})
+    images = MultipleImage.objects.filter(postid = pk)
+    return render(request, 'news/post_detail.html', {'post': post, 'images': images})
 
 def post_new(request):
     if request.method == "POST":
@@ -87,11 +88,13 @@ def menu_delete(request, pk):
 
 def post_delete(request, pk):
     post = get_object_or_404(Post, pk=pk)
+    images = MultipleImage.objects.filter(postid = pk)
     context = {'post': post}
     if request.method == 'GET':
         return render(request, 'news/post_confirm_delete.html', context)
     elif request.method == 'POST':
         post.delete()
+        images.delete()
         messages.success(request, 'The post has been deleted successfully.')
         return redirect('post_list')
 def kids_new(request):
@@ -126,3 +129,14 @@ def kids_delete(request, pk):
         menu.delete()
         messages.success(request, 'The post has been deleted successfully.')
         return redirect('kids_detail')
+
+def upload(request,pk):
+    if request.method == "POST":
+        images = request.FILES.getlist('images')
+        for image in images:
+            MultipleImage.objects.create(images=image, postid = pk)
+        return redirect('post_detail', pk=pk)
+    images = MultipleImage.objects.all()
+    return render(request, 'news/post_add_photo.html', {'images': images})
+
+

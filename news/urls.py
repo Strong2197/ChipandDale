@@ -16,4 +16,6 @@ urlpatterns = [
     path('menu/<int:pk>/edit', views.menu_edit, name='menu_edit'),
     path('menu/new/', views.menu_new, name='menu_new'),
     path('menu/delete/<int:pk>/', views.menu_delete, name='menu_delete'),
+    path('post/<int:pk>/post_add_photo', views.upload, name='post_add_photo'),
+
 ]

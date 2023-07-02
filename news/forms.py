@@ -18,3 +18,8 @@ class KidsForm(forms.ModelForm):
     class Meta:
         model = Attracs
         fields = ('price', 'name', 'image')
+
+
+
+
+

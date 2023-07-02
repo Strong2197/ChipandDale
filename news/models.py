@@ -51,3 +51,17 @@ class Attracs(models.Model):
 
 	def __str__(self):
 		return self.name
+
+class MultipleImage(models.Model):
+	postid = models.CharField(null=True, max_length=100, verbose_name="До новини")
+	images = models.ImageField(null=True, verbose_name="Фото", max_length=200)
+
+	class Meta():
+		verbose_name = 'Фото до новини'
+		verbose_name_plural = "Фото до новини"
+
+	def publish(self):
+		self.save
+
+	def __str__(self):
+		return self.postid

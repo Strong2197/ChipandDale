@@ -1,6 +1,45 @@
 {% extends 'news/base.html' %}
 
 {% block content %}
+<style>
+    html,
+    body {
+      position: relative;
+      height: 100%;
+    }
+
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+
+
 <div class="top-menu">
 {% if user.is_superuser %}
        <ul class="nav justify-content-end">
@@ -17,7 +56,7 @@
             <div class="date">
                 {{ post.published_date }}
 
-          <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+          <h1>{{ post.title }}</h1>
             <p>{{ post.text|linebreaksbr }}</p>
 
         </div>
@@ -25,19 +64,36 @@
              {% endif %}
 
             <div class="col-6">
-                 {% if post.image %}
-            <img src="{{ post.image.url }}" height="500px" width="500px" >
+                {% if images %}
+ {% if post.image %}
+             <swiper-container class="mySwiper" navigation="true">
+     <swiper-slide><img src="{{ post.image.url }}" class="rounded" height="500px" width="500px" ></swiper-slide>
+        {% for image in images %}
+    <swiper-slide> <img src="{{ image.images.url }}" class="rounded" height="500px" width="500px" ></swiper-slide>
+        {% endfor %}
+     </swiper-container>
             {% endif %}
+
+                {% else %}
+                <img src="{{ post.image.url }}" class="rounded" height="500px" width="500px" >
+        {% endif %}
+
                 </div>
 </div>
     <br>
     <div class="row">
         <div col="col-2">
          {% if user.is_superuser %}
-            <a class="btn btn-dark" href="{% url 'post_edit' pk=post.pk %}">Edit</span></a>
-            <a class="btn btn-dark" href="{% url 'post_delete' pk=post.pk %}">Delete</span></a>
+            <a class="btn btn-dark" href="{% url 'post_edit' pk=post.pk %}">Edit</a>
+            <a class="btn btn-dark" href="{% url 'post_delete' pk=post.pk %}">Delete</a>
+            <a class="btn btn-dark" href="{% url 'post_add_photo' pk=post.pk %}">Add Photo</a>
             {% endif %}
             </div>
+    </div>
+
+    <div class="container">
+
+
     </div>
 
 </div>

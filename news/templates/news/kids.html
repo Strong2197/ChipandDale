@@ -13,35 +13,35 @@
 </div>
 <div class="container">
 <div class ="row">
-        <div class="col-2 text-center">
+        <div class="col-2 text-center menu">
             <h1>Ціна</h1>
         </div>
-        <div class="col-sm-4 col-6 text-center">
+        <div class="col-sm-4 col-6 text-center menu">
             <h1>Назва</h1>
         </div>
-    <div class="col-sm-6 col-4 text-center">
+    <div class="col-sm-6 col-4 text-center menu">
             <h1>Фото</h1>
         </div>
     </div>
     {% for menu in menu %}
 <div class ="row">
-        <div class="col-2 text-center">
+        <div class="col-2 text-center menu">
             <h1> {{ menu.price }}</h1>
         </div>
     {% if user.is_superuser %}
-        <div class="col-sm-2 col-4 text-center">
+        <div class="col-sm-2 col-4 text-center menu">
             <h1>{{menu.name}}</h1>
         </div>
     {% else %}
-        <div class="col-sm-4 col-6 text-center">
+        <div class="col-sm-4 col-6 text-center menu">
             <h1>{{menu.name}}</h1>
         </div>
     {% endif %}
-     <div class="col-sm-6 col-4 text-center">
+     <div class="col-sm-6 col-4 text-center menu">
             <img src="{{ menu.image.url }}", width="100%", height="100%" , alt="{{ menu.name }}" >
         </div>
          {% if user.is_superuser %}
-    <div class="col-2 text-center">
+    <div class="col-2 text-center menu">
                 <a class="btn btn-dark" href="{% url 'kids_edit' pk=menu.pk %}">Edit</span></a>
                 <a class="btn btn-dark" href="{% url 'kids_delete' pk=menu.pk %}">Delete</span></a>
     </div>

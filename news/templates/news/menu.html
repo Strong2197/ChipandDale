@@ -12,29 +12,58 @@
          {% endif %}
 </div>
 <div class="container">
+<table class="table table-striped">
+    <div class="thead">
+        <tr>
+            <th scope="col"><h2>Ціна</h2></th>
+            <th scope="col"><h2>Страва</h2></th>
+            {% if user.is_superuser %}
+            <th scope="col"><h2>Редагування (Тільки для адміна)</h2></th>
+            {% endif %}
+        </tr>
+    </div>
+    <tbody>
+    {% for menu in menu %}
+    <tr>
+        <td><h2>{{ menu.price }}</h2></td>
+        <td><h2>{{menu.dish}}</h2></td>
+        {% if user.is_superuser %}
+            <td>
+            <a class="btn btn-dark" href="{% url 'menu_edit' pk=menu.pk %}">Edit</span></a>
+            <a class="btn btn-dark" href="{% url 'menu_delete' pk=menu.pk %}">Delete</span></a>
+            </td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    </div>
+
+
+<div class="container">
 <div class ="row">
-        <div class="col-6 text-center">
+        <div class="col-6 text-center menu">
             <h1>Ціна</h1>
         </div>
-        <div class="col-6 text-center">
+        <div class="col-6 text-center menu">
             <h1>Страва</h1>
         </div>
     </div>
     {% for menu in menu %}
 <div class ="row">
-        <div class="col-6 text-center">
+        <div class="col-6 text-center menu">
             <h1> {{ menu.price }}</h1>
         </div>
      {% if user.is_superuser %}
-    <div class="col-4 text-center">
+    <div class="col-4 text-center menu">
         <h1>{{menu.dish}}</h1>
     </div>
-    <div class="col-2 text-center">
+    <div class="col-2 text-center menu">
             <a class="btn btn-dark" href="{% url 'menu_edit' pk=menu.pk %}">Edit</span></a>
             <a class="btn btn-dark" href="{% url 'menu_delete' pk=menu.pk %}">Delete</span></a>
     </div>
     {% else %}
-    <div class="col-6 text-center">
+    <div class="col-6 text-center menu">
         <h1>{{menu.dish}}</h1>
     </div>
      {% endif %}
