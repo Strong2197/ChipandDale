@@ -5,8 +5,8 @@
   <div class="top-menu">
 {% if user.is_superuser %}
         <ul class="nav justify-content-end">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="{% url 'menu_new' %}">+</a>
+  <li class="nav-item editbutton2">
+    <a class="btn btn-dark" aria-current="page" href="{% url 'menu_new' %}">New post</a>
   </li>
         </ul>
          {% endif %}
