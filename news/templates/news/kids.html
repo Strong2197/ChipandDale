@@ -37,17 +37,31 @@
             <h1>{{menu.name}}</h1>
         </div>
     {% endif %}
+    {% if images %}
+     <div class="col-sm-6 col-4 text-center menu">
+
+            <img src="{{ menu.image.url }}", class="rounded" width="100%", height="100%" , alt="{{ menu.name }}" >
+               </div>
+    {% else %}
+
      <div class="col-sm-6 col-4 text-center menu">
             <img src="{{ menu.image.url }}", class="rounded" width="100%", height="100%" , alt="{{ menu.name }}" >
         </div>
+    {% endif %}
          {% if user.is_superuser %}
     <div class="col-2 text-center menu">
                 <a class="btn btn-dark" href="{% url 'kids_edit' pk=menu.pk %}">Edit</span></a>
                 <a class="btn btn-dark" href="{% url 'kids_delete' pk=menu.pk %}">Delete</span></a>
+                <a class="btn btn-dark" href="{% url 'menu_add_photo' pk=menu.pk %}">Add Photo</a>
+                <a class="btn btn-dark" href="{% url 'kids_detail' pk=menu.pk %}">Detail</a>
     </div>
     {% endif %}
     </div>
 
     {% endfor %}
+
+
     </div>
+
+
 {% endblock %}

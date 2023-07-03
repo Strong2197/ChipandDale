@@ -65,3 +65,17 @@ class MultipleImage(models.Model):
 
 	def __str__(self):
 		return self.postid
+
+class MultipleImageKids(models.Model):
+	postid = models.CharField(null=True, max_length=100, verbose_name="До атракціону")
+	images = models.ImageField(null=True, verbose_name="Фото", max_length=200)
+
+	class Meta():
+		verbose_name = 'Фото до Атракціонів'
+		verbose_name_plural = "Фото до Атракціонів"
+
+	def publish(self):
+		self.save
+
+	def __str__(self):
+		return self.postid

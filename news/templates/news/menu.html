@@ -40,35 +40,5 @@
     </div>
 
 
-<div class="container">
-<div class ="row">
-        <div class="col-6 text-center menu">
-            <h1>Ціна</h1>
-        </div>
-        <div class="col-6 text-center menu">
-            <h1>Страва</h1>
-        </div>
-    </div>
-    {% for menu in menu %}
-<div class ="row">
-        <div class="col-6 text-center menu">
-            <h1> {{ menu.price }}</h1>
-        </div>
-     {% if user.is_superuser %}
-    <div class="col-4 text-center menu">
-        <h1>{{menu.dish}}</h1>
-    </div>
-    <div class="col-2 text-center menu">
-            <a class="btn btn-dark" href="{% url 'menu_edit' pk=menu.pk %}">Edit</span></a>
-            <a class="btn btn-dark" href="{% url 'menu_delete' pk=menu.pk %}">Delete</span></a>
-    </div>
-    {% else %}
-    <div class="col-6 text-center menu">
-        <h1>{{menu.dish}}</h1>
-    </div>
-     {% endif %}
-    </div>
 
-    {% endfor %}
-    </div>
 {% endblock %}

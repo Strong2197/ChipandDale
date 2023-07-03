@@ -17,5 +17,7 @@ urlpatterns = [
     path('menu/new/', views.menu_new, name='menu_new'),
     path('menu/delete/<int:pk>/', views.menu_delete, name='menu_delete'),
     path('post/<int:pk>/post_add_photo', views.upload, name='post_add_photo'),
+    path('menu/<int:pk>/menu_add_photo', views.upload_menu, name='menu_add_photo'),
+    path('kids/<int:pk>/detail', views.kids_detail_detail, name='kids_detail'),
 
 ]

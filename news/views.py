@@ -1,11 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-from .models import Post,Menu, Attracs, MultipleImage
-from .forms import PostForm,MenuForm, KidsForm
+from .models import Post, Menu, Attracs, MultipleImage, MultipleImageKids
+from .forms import PostForm, MenuForm, KidsForm
 from django.shortcuts import redirect
 from django.contrib import messages
 
-from django import forms
 
 
 def base(request):
@@ -13,14 +12,18 @@ def base(request):
 
 def post_list(request):
     posts = Post.objects.all().order_by('-published_date')
-    return render(request, 'news/post_list.html', {'posts':posts})
+    return render(request, 'news/post_list.html', {'posts': posts})
 
 def menu_detail(request):
-    menu=Menu.objects.all()
+    menu = Menu.objects.all()
     return render(request, 'news/menu.html', {'menu': menu})
 def kids_detail(request):
     menu=Attracs.objects.all()
     return render(request, 'news/kids.html', {'menu': menu})
+def kids_detail_detail(request, pk):
+    post = get_object_or_404(Attracs, pk=pk)
+    images = MultipleImageKids.objects.filter(postid=pk)
+    return render(request, 'news/kids_detail.html', {'post': post, 'images': images})
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -32,7 +35,6 @@ def post_new(request):
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user
             post.published_date = timezone.now()
             post.save()
             return redirect('post_detail', pk=post.pk)
@@ -46,8 +48,6 @@ def post_edit(request, pk):
         form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
-#            post.author = request.user
-#            post.published_date = timezone.now()
             post.save()
             return redirect('post_detail', pk=post.pk)
     else:
@@ -138,5 +138,14 @@ def upload(request,pk):
         return redirect('post_detail', pk=pk)
     images = MultipleImage.objects.all()
     return render(request, 'news/post_add_photo.html', {'images': images})
+
+def upload_menu(request, pk):
+    if request.method == "POST":
+        images = request.FILES.getlist('images')
+        for image in images:
+            MultipleImageKids.objects.create(images=image, postid = pk)
+        return redirect('kids_detail')
+    images = MultipleImageKids.objects.all()
+    return render(request, 'news/menu_add_photo.html', {'images': images})
 
 
