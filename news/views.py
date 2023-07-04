@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-from .models import Post, Menu, Attracs, MultipleImage, MultipleImageKids
+from .models import Post, Menu, Attracs, MultipleImage
 from .forms import PostForm, MenuForm, KidsForm
 from django.shortcuts import redirect
 from django.contrib import messages
@@ -20,10 +20,7 @@ def menu_detail(request):
 def kids_detail(request):
     menu=Attracs.objects.all()
     return render(request, 'news/kids.html', {'menu': menu})
-def kids_detail_detail(request, pk):
-    post = get_object_or_404(Attracs, pk=pk)
-    images = MultipleImageKids.objects.filter(postid=pk)
-    return render(request, 'news/kids_detail.html', {'post': post, 'images': images})
+
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -139,13 +136,6 @@ def upload(request,pk):
     images = MultipleImage.objects.all()
     return render(request, 'news/post_add_photo.html', {'images': images})
 
-def upload_menu(request, pk):
-    if request.method == "POST":
-        images = request.FILES.getlist('images')
-        for image in images:
-            MultipleImageKids.objects.create(images=image, postid = pk)
-        return redirect('kids_detail')
-    images = MultipleImageKids.objects.all()
-    return render(request, 'news/menu_add_photo.html', {'images': images})
+
 
 

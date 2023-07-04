@@ -11,49 +11,7 @@
         </ul>
          {% endif %}
 </div>
-<div class="container">
-<div class ="row">
-        <div class="col-2 text-center menu">
-            <h1>Ціна</h1>
-        </div>
-        <div class="col-sm-4 col-6 text-center menu">
-            <h1>Назва</h1>
-        </div>
-    <div class="col-sm-6 col-4 text-center menu">
-            <h1>Фото</h1>
-        </div>
-    </div>
-    {% for menu in menu %}
-<div class ="row">
-        <div class="col-2 text-center menu">
-            <h1> {{ menu.price }}</h1>
-        </div>
-    {% if user.is_superuser %}
-        <div class="col-sm-2 col-4 text-center menu">
-            <h1>{{menu.name}}</h1>
-        </div>
-    {% else %}
-        <div class="col-sm-4 col-6 text-center menu">
-            <h1>{{menu.name}}</h1>
-        </div>
-    {% endif %}
 
-     <div class="col-sm-6 col-4 text-center menu">
-            <img src="{{ menu.image.url }}", class="rounded" width="100%", height="100%" , alt="{{ menu.name }}" >
-        </div>
-
-         {% if user.is_superuser %}
-    <div class="col-2 text-center menu">
-                <a class="btn btn-dark" href="{% url 'kids_edit' pk=menu.pk %}">Edit</span></a>
-                <a class="btn btn-dark" href="{% url 'kids_delete' pk=menu.pk %}">Delete</span></a>
-                <a class="btn btn-dark" href="{% url 'menu_add_photo' pk=menu.pk %}">Add Photo</a>
-                <a class="btn btn-dark" href="{% url 'kids_detail' pk=menu.pk %}">Detail</a>
-    </div>
-    {% endif %}
-    </div>
-
-    {% endfor %}
-</div>
 <div class="container">
 <table class="table table-striped">
     <div class="thead">
@@ -71,7 +29,13 @@
     <tr>
         <td><h2>{{ menu.price }}</h2></td>
         <td><h2>{{menu.name}}</h2></td>
-        <td> <img src="{{ menu.image.url }}", class="rounded" width="100%", height="100%" , alt="{{ menu.name }}" ></td>
+        <td>  <a
+         data-fancybox="gallery"
+         data-src="{{ menu.image.url }}"
+         data-caption="{{menu.name}}"
+         >
+        <img src="{{ menu.image.url }}" , class="rounded", width="100%", height="100%" />
+      </a></td>
         {% if user.is_superuser %}
             <td>
             <a class="btn btn-dark" href="{% url 'menu_edit' pk=menu.pk %}">Edit</span></a>
@@ -83,5 +47,6 @@
     </tbody>
 </table>
     </div>
+
 
 {% endblock %}
